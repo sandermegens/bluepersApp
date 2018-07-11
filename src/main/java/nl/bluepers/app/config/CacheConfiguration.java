@@ -5,13 +5,11 @@ import java.time.Duration;
 import org.ehcache.config.builders.*;
 import org.ehcache.jsr107.Eh107Configuration;
 
+import io.github.jhipster.config.jcache.BeanClassLoaderAwareJCacheRegionFactory;
 import io.github.jhipster.config.JHipsterProperties;
 
 import org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.context.annotation.*;
 
 @Configuration
@@ -21,6 +19,7 @@ public class CacheConfiguration {
     private final javax.cache.configuration.Configuration<Object, Object> jcacheConfiguration;
 
     public CacheConfiguration(JHipsterProperties jHipsterProperties) {
+        BeanClassLoaderAwareJCacheRegionFactory.setBeanClassLoader(this.getClass().getClassLoader());
         JHipsterProperties.Cache.Ehcache ehcache =
             jHipsterProperties.getCache().getEhcache();
 
@@ -34,6 +33,13 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
+            cm.createCache(nl.bluepers.app.repository.UserRepository.USERS_BY_LOGIN_CACHE, jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.repository.UserRepository.USERS_BY_EMAIL_CACHE, jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.User.class.getName(), jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.Authority.class.getName(), jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.PersistentToken.class.getName(), jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

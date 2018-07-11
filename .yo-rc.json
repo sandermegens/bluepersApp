@@ -5,35 +5,37 @@
       "nativeLanguage": "nl"
     },
     "jhipsterVersion": "5.0.2",
-    "applicationType": "microservice",
+    "applicationType": "monolith",
     "baseName": "BluepersApp",
     "packageName": "nl.bluepers.app",
     "packageFolder": "nl/bluepers/app",
-    "serverPort": "8081",
-    "authenticationType": "jwt",
+    "serverPort": "8080",
+    "authenticationType": "session",
     "cacheProvider": "ehcache",
-    "enableHibernateCache": false,
+    "enableHibernateCache": true,
     "websocket": false,
     "databaseType": "sql",
     "devDatabaseType": "mysql",
     "prodDatabaseType": "mysql",
     "searchEngine": false,
     "messageBroker": false,
-    "serviceDiscoveryType": "eureka",
+    "serviceDiscoveryType": false,
     "buildTool": "gradle",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "4f58ff5845133af7731b3651b91f23bea2374f8c",
-    "enableTranslation": true,
+    "rememberMeKey": "6e676b28f7e8cdbf9c8992966dc20fbd9d2344b5",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "npm",
     "testFrameworks": [
-      "gatling"
+      "gatling",
+      "protractor"
     ],
     "jhiPrefix": "jhi",
-    "clientPackageManager": "npm",
+    "enableTranslation": true,
     "nativeLanguage": "nl",
     "languages": [
-      "nl"
-    ],
-    "skipClient": true,
-    "skipUserManagement": true
+      "nl",
+      "en"
+    ]
   }
 }

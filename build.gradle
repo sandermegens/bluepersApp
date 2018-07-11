@@ -21,6 +21,7 @@ plugins {
     id "net.ltgt.apt-idea" version "0.15"
     id "net.ltgt.apt" version "0.15"
     id "io.spring.dependency-management" version "1.0.5.RELEASE"
+    id "com.moowork.node" version "1.2.0"
     //jhipster-needle-gradle-plugins - JHipster will add additional gradle plugins here
 }
 
@@ -34,6 +35,7 @@ apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 apply plugin: 'propdeps'
+apply plugin: 'com.moowork.node'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'idea'
 
@@ -121,10 +123,6 @@ if (project.hasProperty('prometheus')) {
     apply from: 'gradle/prometheus.gradle'
 }
 
-if (project.hasProperty('zipkin')) {
-    apply from: 'gradle/zipkin.gradle'
-}
-
 configurations {
     providedRuntime
     compile.exclude module: "spring-boot-starter-tomcat"
@@ -163,6 +161,7 @@ dependencies {
     compile "commons-io:commons-io"
     compile "javax.transaction:javax.transaction-api"
     compile "org.ehcache:ehcache"
+    compile "org.hibernate:hibernate-jcache"
     compile "org.hibernate:hibernate-entitymanager"
     compile "org.hibernate:hibernate-envers"
     compile "org.hibernate.validator:hibernate-validator"
@@ -181,18 +180,10 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-undertow"
     compile "org.springframework.boot:spring-boot-starter-thymeleaf"
     compile "org.zalando:problem-spring-web"
-    compile "org.springframework.cloud:spring-cloud-starter"
-    compile "org.springframework.cloud:spring-cloud-starter-netflix-ribbon"
-    compile "org.springframework.cloud:spring-cloud-starter-netflix-hystrix"
-    compile "org.springframework.retry:spring-retry"
-    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client"
-    compile "org.springframework.cloud:spring-cloud-starter-config"
-    compile "org.springframework.cloud:spring-cloud-starter-openfeign"
     compile "org.springframework.cloud:spring-cloud-spring-service-connector"
     compile "org.springframework.security:spring-security-config"
     compile "org.springframework.security:spring-security-data"
     compile "org.springframework.security:spring-security-web"
-    compile "io.jsonwebtoken:jjwt"
     compile ("io.springfox:springfox-swagger2") {
         exclude module: 'mapstruct'
     }
@@ -228,6 +219,15 @@ task wrapper(type: Wrapper) {
 }
 
 task stage(dependsOn: 'bootWar') {
+}
+
+if (project.hasProperty('nodeInstall')) {
+    node {
+        version = "${node_version}"
+        npmVersion = "${npm_version}"
+        yarnVersion = "${yarn_version}"
+        download = true
+    }
 }
 
 compileJava.dependsOn processResources

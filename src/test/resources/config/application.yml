@@ -13,12 +13,6 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
-eureka:
-    client:
-        enabled: false
-    instance:
-        appname: BluepersApp
-        instanceId: BluepersApp:${spring.application.instance-id:${random.value}}
 
 spring:
     application:
@@ -86,12 +80,13 @@ jhipster:
             host: localhost
             port: 5000
             queue-size: 512
+    mail:
+        from: test@localhost
+        base-url: http://127.0.0.1:8080
     security:
-        authentication:
-            jwt:
-                secret: 4f58ff5845133af7731b3651b91f23bea2374f8c
-                # Token is valid 24 hours
-                token-validity-in-seconds: 86400
+        remember-me:
+            # security key (this key should be unique for your application, and kept secret)
+            key: 6e676b28f7e8cdbf9c8992966dc20fbd9d2344b5
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         logs: # Reports Dropwizard metrics in the logs
