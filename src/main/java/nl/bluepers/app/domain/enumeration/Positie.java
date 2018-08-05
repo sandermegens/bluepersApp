@@ -1,0 +1,8 @@
+package nl.bluepers.app.domain.enumeration;
+
+/**
+ * The Positie enumeration.
+ */
+public enum Positie {
+    KEEPER, LINKSBACK, CENTRALEVERDEDIGER, RECHTSBACK, RECHTERMIDDENVELDER, LINKERMIDDENVELDER, CENTRALEMIDDENVELDER, LINKSBUITEN, RECHTSBUITEN, SPITS
+}

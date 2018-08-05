@@ -1,0 +1,72 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="bluepersApp.wedstrijd.home.title">Wedstrijds</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-wedstrijd" [routerLink]="['/wedstrijd/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="bluepersApp.wedstrijd.home.createLabel">
+            Create new Wedstrijd
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="wedstrijds">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="datum"><span jhiTranslate="bluepersApp.wedstrijd.datum">Datum</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tijd"><span jhiTranslate="bluepersApp.wedstrijd.tijd">Tijd</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="plaats"><span jhiTranslate="bluepersApp.wedstrijd.plaats">Plaats</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="competitieId"><span jhiTranslate="bluepersApp.wedstrijd.competitie">Competitie</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let wedstrijd of wedstrijds ;trackBy: trackId">
+                <td><a [routerLink]="['/wedstrijd', wedstrijd.id, 'view' ]">{{wedstrijd.id}}</a></td>
+                <td>{{wedstrijd.datum | date:'mediumDate'}}</td>
+                <td>{{wedstrijd.tijd | date:'mediumDate'}}</td>
+                <td>{{wedstrijd.plaats}}</td>
+                <td>
+                    <div *ngIf="wedstrijd.competitieId">
+                        <a [routerLink]="['../competitie', wedstrijd.competitieId , 'view' ]" >{{wedstrijd.competitieId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/wedstrijd', wedstrijd.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/wedstrijd', wedstrijd.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'wedstrijd/'+ wedstrijd.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="wedstrijds && wedstrijds.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

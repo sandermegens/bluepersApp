@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="wedstrijd">
+            <h2><span jhiTranslate="bluepersApp.wedstrijd.detail.title">Wedstrijd</span> {{wedstrijd.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bluepersApp.wedstrijd.datum">Datum</span></dt>
+                <dd>
+                    <span>{{wedstrijd.datum}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.wedstrijd.tijd">Tijd</span></dt>
+                <dd>
+                    <span>{{wedstrijd.tijd}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.wedstrijd.plaats">Plaats</span></dt>
+                <dd>
+                    <span>{{wedstrijd.plaats}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.wedstrijd.competitie">Competitie</span></dt>
+                <dd>
+                    <div *ngIf="wedstrijd.competitieId">
+                        <a [routerLink]="['/competitie', wedstrijd.competitieId, 'view']">{{wedstrijd.competitieId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/wedstrijd', wedstrijd.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="speler">
+            <h2><span jhiTranslate="bluepersApp.speler.detail.title">Speler</span> {{speler.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bluepersApp.speler.voornaam">Voornaam</span></dt>
+                <dd>
+                    <span>{{speler.voornaam}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.speler.tussenvoegsel">Tussenvoegsel</span></dt>
+                <dd>
+                    <span>{{speler.tussenvoegsel}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.speler.achternaam">Achternaam</span></dt>
+                <dd>
+                    <span>{{speler.achternaam}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.speler.rugnummer">Rugnummer</span></dt>
+                <dd>
+                    <span>{{speler.rugnummer}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.speler.positie">Positie</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'bluepersApp.Positie.' + speler.positie}}">{{speler.positie}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.speler.geboorteDatum">Geboorte Datum</span></dt>
+                <dd>
+                    <span>{{speler.geboorteDatum}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.speler.debuut">Debuut</span></dt>
+                <dd>
+                    <span>{{speler.debuut}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.speler.bijzonderheden">Bijzonderheden</span></dt>
+                <dd>
+                    <span>{{speler.bijzonderheden}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.speler.wedstrijd">Wedstrijd</span></dt>
+                <dd>
+                    <div *ngIf="speler.wedstrijdId">
+                        <a [routerLink]="['/wedstrijd', speler.wedstrijdId, 'view']">{{speler.wedstrijdId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/speler', speler.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

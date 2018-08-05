@@ -1,0 +1,57 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "wedstrijd",
+            "otherEntityName": "wedstrijd",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "voornaam",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tussenvoegsel",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "achternaam",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rugnummer",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "positie",
+            "fieldType": "Positie",
+            "fieldValues": "KEEPER,LINKSBACK,CENTRALEVERDEDIGER,RECHTSBACK,RECHTERMIDDENVELDER,LINKERMIDDENVELDER,CENTRALEMIDDENVELDER,LINKSBUITEN,RECHTSBUITEN,SPITS"
+        },
+        {
+            "fieldName": "geboorteDatum",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "debuut",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "bijzonderheden",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180722134824",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "speler",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

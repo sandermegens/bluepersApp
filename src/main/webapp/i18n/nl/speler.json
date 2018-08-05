@@ -1,0 +1,30 @@
+
+{
+    "bluepersApp": {
+        "speler" : {
+            "home": {
+                "title": "Spelers",
+                "createLabel": "Maak een nieuwe Speler",
+                "createOrEditLabel": "Maak of wijzig een Speler"
+            },
+            "created": "A new Speler is created with identifier {{ param }}",
+            "updated": "A Speler is updated with identifier {{ param }}",
+            "deleted": "A Speler is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Speler {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Speler"
+            },
+            "voornaam": "Voornaam",
+            "tussenvoegsel": "Tussenvoegsel",
+            "achternaam": "Achternaam",
+            "rugnummer": "Rugnummer",
+            "positie": "Positie",
+            "geboorteDatum": "Geboorte Datum",
+            "debuut": "Debuut",
+            "bijzonderheden": "Bijzonderheden",
+            "wedstrijd": "Wedstrijd"
+        }
+    }
+}
