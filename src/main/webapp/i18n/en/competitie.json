@@ -1,0 +1,23 @@
+
+{
+    "bluepersApp": {
+        "competitie" : {
+            "home": {
+                "title": "Competities",
+                "createLabel": "Create a new Competitie",
+                "createOrEditLabel": "Create or edit a Competitie"
+            },
+            "created": "A new Competitie is created with identifier {{ param }}",
+            "updated": "A Competitie is updated with identifier {{ param }}",
+            "deleted": "A Competitie is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Competitie {{ id }}?"
+            },
+            "detail": {
+                "title": "Competitie"
+            },
+            "seizoen": "Seizoen",
+            "wedstrijd": "Wedstrijd"
+        }
+    }
+}

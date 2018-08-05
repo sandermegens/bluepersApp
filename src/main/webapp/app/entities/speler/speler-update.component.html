@@ -1,0 +1,97 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-speler-heading" jhiTranslate="bluepersApp.speler.home.createOrEditLabel">Create or edit a Speler</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!speler.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="speler.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.voornaam" for="field_voornaam">Voornaam</label>
+                    <input type="text" class="form-control" name="voornaam" id="field_voornaam"
+                        [(ngModel)]="speler.voornaam" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.tussenvoegsel" for="field_tussenvoegsel">Tussenvoegsel</label>
+                    <input type="text" class="form-control" name="tussenvoegsel" id="field_tussenvoegsel"
+                        [(ngModel)]="speler.tussenvoegsel" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.achternaam" for="field_achternaam">Achternaam</label>
+                    <input type="text" class="form-control" name="achternaam" id="field_achternaam"
+                        [(ngModel)]="speler.achternaam" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.rugnummer" for="field_rugnummer">Rugnummer</label>
+                    <input type="number" class="form-control" name="rugnummer" id="field_rugnummer"
+                        [(ngModel)]="speler.rugnummer" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.positie" for="field_positie">Positie</label>
+                    <select class="form-control" name="positie" [(ngModel)]="speler.positie" id="field_positie" >
+                        <option value="KEEPER">{{'bluepersApp.Positie.KEEPER' | translate}}</option>
+                        <option value="LINKSBACK">{{'bluepersApp.Positie.LINKSBACK' | translate}}</option>
+                        <option value="CENTRALEVERDEDIGER">{{'bluepersApp.Positie.CENTRALEVERDEDIGER' | translate}}</option>
+                        <option value="RECHTSBACK">{{'bluepersApp.Positie.RECHTSBACK' | translate}}</option>
+                        <option value="RECHTERMIDDENVELDER">{{'bluepersApp.Positie.RECHTERMIDDENVELDER' | translate}}</option>
+                        <option value="LINKERMIDDENVELDER">{{'bluepersApp.Positie.LINKERMIDDENVELDER' | translate}}</option>
+                        <option value="CENTRALEMIDDENVELDER">{{'bluepersApp.Positie.CENTRALEMIDDENVELDER' | translate}}</option>
+                        <option value="LINKSBUITEN">{{'bluepersApp.Positie.LINKSBUITEN' | translate}}</option>
+                        <option value="RECHTSBUITEN">{{'bluepersApp.Positie.RECHTSBUITEN' | translate}}</option>
+                        <option value="SPITS">{{'bluepersApp.Positie.SPITS' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.geboorteDatum" for="field_geboorteDatum">Geboorte Datum</label>
+                    <div class="input-group">
+                        <input id="field_geboorteDatum" type="text" class="form-control" name="geboorteDatum" ngbDatepicker  #geboorteDatumDp="ngbDatepicker" [(ngModel)]="speler.geboorteDatum"
+                        required/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="geboorteDatumDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div [hidden]="!(editForm.controls.geboorteDatum?.dirty && editForm.controls.geboorteDatum?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.geboorteDatum?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.debuut" for="field_debuut">Debuut</label>
+                    <div class="input-group">
+                        <input id="field_debuut" type="text" class="form-control" name="debuut" ngbDatepicker  #debuutDp="ngbDatepicker" [(ngModel)]="speler.debuut"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="debuutDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.bijzonderheden" for="field_bijzonderheden">Bijzonderheden</label>
+                    <input type="text" class="form-control" name="bijzonderheden" id="field_bijzonderheden"
+                        [(ngModel)]="speler.bijzonderheden" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.wedstrijd" for="field_wedstrijd">Wedstrijd</label>
+                    <select class="form-control" id="field_wedstrijd" name="wedstrijd" [(ngModel)]="speler.wedstrijdId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="wedstrijdOption.id" *ngFor="let wedstrijdOption of wedstrijds; trackBy: trackWedstrijdById">{{wedstrijdOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

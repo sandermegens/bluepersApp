@@ -1,0 +1,17 @@
+{
+    "bluepersApp": {
+        "Positie" : {
+            "null": "",
+            "KEEPER": "KEEPER",
+            "LINKSBACK": "LINKSBACK",
+            "CENTRALEVERDEDIGER": "CENTRALEVERDEDIGER",
+            "RECHTSBACK": "RECHTSBACK",
+            "RECHTERMIDDENVELDER": "RECHTERMIDDENVELDER",
+            "LINKERMIDDENVELDER": "LINKERMIDDENVELDER",
+            "CENTRALEMIDDENVELDER": "CENTRALEMIDDENVELDER",
+            "LINKSBUITEN": "LINKSBUITEN",
+            "RECHTSBUITEN": "RECHTSBUITEN",
+            "SPITS": "SPITS"
+        }
+    }
+}

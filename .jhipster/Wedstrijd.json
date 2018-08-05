@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "speler",
+            "otherEntityName": "speler",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "wedstrijd"
+        },
+        {
+            "relationshipName": "competitie",
+            "otherEntityName": "competitie",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "datum",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tijd",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "plaats",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180722140506",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "wedstrijd",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}
