@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "competitie",
+            "otherEntityName": "competitie",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "team"
+        },
+        {
+            "relationshipName": "speler",
+            "otherEntityName": "speler",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "team"
+        },
+        {
+            "relationshipName": "wedstrijd",
+            "otherEntityName": "wedstrijd",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "team"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "naam",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180812111317",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "team",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

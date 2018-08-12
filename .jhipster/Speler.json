@@ -3,8 +3,8 @@
     "clientRootFolder": "",
     "relationships": [
         {
-            "relationshipName": "wedstrijd",
-            "otherEntityName": "wedstrijd",
+            "relationshipName": "team",
+            "otherEntityName": "team",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }

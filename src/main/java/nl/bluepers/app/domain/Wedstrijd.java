@@ -1,6 +1,5 @@
 package nl.bluepers.app.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -39,13 +38,16 @@ public class Wedstrijd implements Serializable {
     @Column(name = "plaats")
     private String plaats;
 
-    @OneToMany(mappedBy = "wedstrijd")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Speler> spelers = new HashSet<>();
-
     @ManyToOne
     @JsonIgnoreProperties("")
     private Competitie competitie;
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "wedstrijd_team",
+               joinColumns = @JoinColumn(name = "wedstrijds_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "teams_id", referencedColumnName = "id"))
+    private Set<Team> teams = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -95,31 +97,6 @@ public class Wedstrijd implements Serializable {
         this.plaats = plaats;
     }
 
-    public Set<Speler> getSpelers() {
-        return spelers;
-    }
-
-    public Wedstrijd spelers(Set<Speler> spelers) {
-        this.spelers = spelers;
-        return this;
-    }
-
-    public Wedstrijd addSpeler(Speler speler) {
-        this.spelers.add(speler);
-        speler.setWedstrijd(this);
-        return this;
-    }
-
-    public Wedstrijd removeSpeler(Speler speler) {
-        this.spelers.remove(speler);
-        speler.setWedstrijd(null);
-        return this;
-    }
-
-    public void setSpelers(Set<Speler> spelers) {
-        this.spelers = spelers;
-    }
-
     public Competitie getCompetitie() {
         return competitie;
     }
@@ -131,6 +108,31 @@ public class Wedstrijd implements Serializable {
 
     public void setCompetitie(Competitie competitie) {
         this.competitie = competitie;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public Wedstrijd teams(Set<Team> teams) {
+        this.teams = teams;
+        return this;
+    }
+
+    public Wedstrijd addTeam(Team team) {
+        this.teams.add(team);
+        team.getWedstrijds().add(this);
+        return this;
+    }
+
+    public Wedstrijd removeTeam(Team team) {
+        this.teams.remove(team);
+        team.getWedstrijds().remove(this);
+        return this;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

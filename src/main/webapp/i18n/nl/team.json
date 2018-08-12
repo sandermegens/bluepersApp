@@ -1,0 +1,25 @@
+
+{
+    "bluepersApp": {
+        "team" : {
+            "home": {
+                "title": "Teams",
+                "createLabel": "Maak een nieuwe Team",
+                "createOrEditLabel": "Maak of wijzig een Team"
+            },
+            "created": "A new Team is created with identifier {{ param }}",
+            "updated": "A Team is updated with identifier {{ param }}",
+            "deleted": "A Team is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Bent u zeker dat u Team {{ id }} wilt verwijderen?"
+            },
+            "detail": {
+                "title": "Team"
+            },
+            "naam": "Naam",
+            "competitie": "Competitie",
+            "speler": "Speler",
+            "wedstrijd": "Wedstrijd"
+        }
+    }
+}

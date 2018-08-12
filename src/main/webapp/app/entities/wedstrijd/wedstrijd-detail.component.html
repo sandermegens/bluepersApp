@@ -23,6 +23,12 @@
                         <a [routerLink]="['/competitie', wedstrijd.competitieId, 'view']">{{wedstrijd.competitieId}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="bluepersApp.wedstrijd.team">Team</span></dt>
+                <dd>
+                    <span *ngFor="let team of wedstrijd.teams; let last = last">
+                        <a [routerLink]="['/team', team?.id, 'view' ]">{{team.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
             </dl>
 
             <button type="submit"

@@ -55,7 +55,7 @@ public class Speler implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("")
-    private Wedstrijd wedstrijd;
+    private Team team;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -170,17 +170,17 @@ public class Speler implements Serializable {
         this.bijzonderheden = bijzonderheden;
     }
 
-    public Wedstrijd getWedstrijd() {
-        return wedstrijd;
+    public Team getTeam() {
+        return team;
     }
 
-    public Speler wedstrijd(Wedstrijd wedstrijd) {
-        this.wedstrijd = wedstrijd;
+    public Speler team(Team team) {
+        this.team = team;
         return this;
     }
 
-    public void setWedstrijd(Wedstrijd wedstrijd) {
-        this.wedstrijd = wedstrijd;
+    public void setTeam(Team team) {
+        this.team = team;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

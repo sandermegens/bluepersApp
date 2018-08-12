@@ -3,16 +3,18 @@
     "clientRootFolder": "",
     "relationships": [
         {
-            "relationshipName": "speler",
-            "otherEntityName": "speler",
-            "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "wedstrijd"
-        },
-        {
             "relationshipName": "competitie",
             "otherEntityName": "competitie",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "team",
+            "otherEntityName": "team",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "wedstrijd"
         }
     ],
     "fields": [

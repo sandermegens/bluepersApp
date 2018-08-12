@@ -36,6 +36,11 @@ public class Competitie implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Wedstrijd> wedstrijds = new HashSet<>();
 
+    @ManyToMany(mappedBy = "competities")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Team> teams = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -81,6 +86,31 @@ public class Competitie implements Serializable {
 
     public void setWedstrijds(Set<Wedstrijd> wedstrijds) {
         this.wedstrijds = wedstrijds;
+    }
+
+    public Set<Team> getTeams() {
+        return teams;
+    }
+
+    public Competitie teams(Set<Team> teams) {
+        this.teams = teams;
+        return this;
+    }
+
+    public Competitie addTeam(Team team) {
+        this.teams.add(team);
+        team.getCompetities().add(this);
+        return this;
+    }
+
+    public Competitie removeTeam(Team team) {
+        this.teams.remove(team);
+        team.getCompetities().remove(this);
+        return this;
+    }
+
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

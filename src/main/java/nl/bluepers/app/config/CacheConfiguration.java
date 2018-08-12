@@ -45,6 +45,12 @@ public class CacheConfiguration {
             cm.createCache(nl.bluepers.app.domain.Wedstrijd.class.getName() + ".spelers", jcacheConfiguration);
             cm.createCache(nl.bluepers.app.domain.Competitie.class.getName(), jcacheConfiguration);
             cm.createCache(nl.bluepers.app.domain.Competitie.class.getName() + ".wedstrijds", jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.Team.class.getName(), jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.Team.class.getName() + ".spelers", jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.Team.class.getName() + ".wedstrijds", jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.Wedstrijd.class.getName() + ".teams", jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.Competitie.class.getName() + ".teams", jcacheConfiguration);
+            cm.createCache(nl.bluepers.app.domain.Team.class.getName() + ".competities", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

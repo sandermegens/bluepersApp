@@ -61,6 +61,15 @@ public class WedstrijdServiceImpl implements WedstrijdService {
             .map(wedstrijdMapper::toDto);
     }
 
+    /**
+     * Get all the Wedstrijd with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    public Page<WedstrijdDTO> findAllWithEagerRelationships(Pageable pageable) {
+        return wedstrijdRepository.findAllWithEagerRelationships(pageable).map(wedstrijdMapper::toDto);
+    }
+    
 
     /**
      * Get one wedstrijd by id.
@@ -72,7 +81,7 @@ public class WedstrijdServiceImpl implements WedstrijdService {
     @Transactional(readOnly = true)
     public Optional<WedstrijdDTO> findOne(Long id) {
         log.debug("Request to get Wedstrijd : {}", id);
-        return wedstrijdRepository.findById(id)
+        return wedstrijdRepository.findOneWithEagerRelationships(id)
             .map(wedstrijdMapper::toDto);
     }
 

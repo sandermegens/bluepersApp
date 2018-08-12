@@ -37,10 +37,10 @@
                 <dd>
                     <span>{{speler.bijzonderheden}}</span>
                 </dd>
-                <dt><span jhiTranslate="bluepersApp.speler.wedstrijd">Wedstrijd</span></dt>
+                <dt><span jhiTranslate="bluepersApp.speler.team">Team</span></dt>
                 <dd>
-                    <div *ngIf="speler.wedstrijdId">
-                        <a [routerLink]="['/wedstrijd', speler.wedstrijdId, 'view']">{{speler.wedstrijdId}}</a>
+                    <div *ngIf="speler.teamId">
+                        <a [routerLink]="['/team', speler.teamId, 'view']">{{speler.teamId}}</a>
                     </div>
                 </dd>
             </dl>

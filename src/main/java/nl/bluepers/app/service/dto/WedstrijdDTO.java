@@ -3,6 +3,8 @@ package nl.bluepers.app.service.dto;
 import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Objects;
 
 /**
@@ -21,6 +23,8 @@ public class WedstrijdDTO implements Serializable {
     private String plaats;
 
     private Long competitieId;
+
+    private Set<TeamDTO> teams = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -60,6 +64,14 @@ public class WedstrijdDTO implements Serializable {
 
     public void setCompetitieId(Long competitieId) {
         this.competitieId = competitieId;
+    }
+
+    public Set<TeamDTO> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(Set<TeamDTO> teams) {
+        this.teams = teams;
     }
 
     @Override

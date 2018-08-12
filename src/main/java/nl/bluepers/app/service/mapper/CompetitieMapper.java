@@ -13,6 +13,7 @@ public interface CompetitieMapper extends EntityMapper<CompetitieDTO, Competitie
 
 
     @Mapping(target = "wedstrijds", ignore = true)
+    @Mapping(target = "teams", ignore = true)
     Competitie toEntity(CompetitieDTO competitieDTO);
 
     default Competitie fromId(Long id) {

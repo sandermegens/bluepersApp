@@ -8,6 +8,8 @@ import { IWedstrijd } from 'app/shared/model/wedstrijd.model';
 import { WedstrijdService } from './wedstrijd.service';
 import { ICompetitie } from 'app/shared/model/competitie.model';
 import { CompetitieService } from 'app/entities/competitie';
+import { ITeam } from 'app/shared/model/team.model';
+import { TeamService } from 'app/entities/team';
 
 @Component({
     selector: 'jhi-wedstrijd-update',
@@ -18,6 +20,8 @@ export class WedstrijdUpdateComponent implements OnInit {
     isSaving: boolean;
 
     competities: ICompetitie[];
+
+    teams: ITeam[];
     datumDp: any;
     tijdDp: any;
 
@@ -25,6 +29,7 @@ export class WedstrijdUpdateComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private wedstrijdService: WedstrijdService,
         private competitieService: CompetitieService,
+        private teamService: TeamService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -36,6 +41,12 @@ export class WedstrijdUpdateComponent implements OnInit {
         this.competitieService.query().subscribe(
             (res: HttpResponse<ICompetitie[]>) => {
                 this.competities = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.teamService.query().subscribe(
+            (res: HttpResponse<ITeam[]>) => {
+                this.teams = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -73,6 +84,21 @@ export class WedstrijdUpdateComponent implements OnInit {
 
     trackCompetitieById(index: number, item: ICompetitie) {
         return item.id;
+    }
+
+    trackTeamById(index: number, item: ITeam) {
+        return item.id;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
     get wedstrijd() {
         return this._wedstrijd;

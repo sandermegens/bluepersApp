@@ -21,6 +21,7 @@ export class WedstrijdUpdatePage {
     tijdInput = element(by.id('field_tijd'));
     plaatsInput = element(by.id('field_plaats'));
     competitieSelect = element(by.id('field_competitie'));
+    teamSelect = element(by.id('field_team'));
 
     getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -67,6 +68,25 @@ export class WedstrijdUpdatePage {
 
     getCompetitieSelectedOption() {
         return this.competitieSelect.element(by.css('option:checked')).getText();
+    }
+
+    teamSelectLastOption(): promise.Promise<void> {
+        return this.teamSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    teamSelectOption(option): promise.Promise<void> {
+        return this.teamSelect.sendKeys(option);
+    }
+
+    getTeamSelect(): ElementFinder {
+        return this.teamSelect;
+    }
+
+    getTeamSelectedOption() {
+        return this.teamSelect.element(by.css('option:checked')).getText();
     }
 
     save(): promise.Promise<void> {

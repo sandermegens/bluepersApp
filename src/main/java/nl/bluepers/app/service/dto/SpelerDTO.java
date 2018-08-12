@@ -30,7 +30,7 @@ public class SpelerDTO implements Serializable {
 
     private String bijzonderheden;
 
-    private Long wedstrijdId;
+    private Long teamId;
 
     public Long getId() {
         return id;
@@ -104,12 +104,12 @@ public class SpelerDTO implements Serializable {
         this.bijzonderheden = bijzonderheden;
     }
 
-    public Long getWedstrijdId() {
-        return wedstrijdId;
+    public Long getTeamId() {
+        return teamId;
     }
 
-    public void setWedstrijdId(Long wedstrijdId) {
-        this.wedstrijdId = wedstrijdId;
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
     }
 
     @Override
@@ -145,7 +145,7 @@ public class SpelerDTO implements Serializable {
             ", geboorteDatum='" + getGeboorteDatum() + "'" +
             ", debuut='" + getDebuut() + "'" +
             ", bijzonderheden='" + getBijzonderheden() + "'" +
-            ", wedstrijd=" + getWedstrijdId() +
+            ", team=" + getTeamId() +
             "}";
     }
 }

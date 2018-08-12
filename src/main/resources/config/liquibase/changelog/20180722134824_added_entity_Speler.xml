@@ -54,7 +54,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="wedstrijd_id" type="bigint">
+            <column name="team_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 

@@ -6,8 +6,8 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { ISpeler } from 'app/shared/model/speler.model';
 import { SpelerService } from './speler.service';
-import { IWedstrijd } from 'app/shared/model/wedstrijd.model';
-import { WedstrijdService } from 'app/entities/wedstrijd';
+import { ITeam } from 'app/shared/model/team.model';
+import { TeamService } from 'app/entities/team';
 
 @Component({
     selector: 'jhi-speler-update',
@@ -17,14 +17,14 @@ export class SpelerUpdateComponent implements OnInit {
     private _speler: ISpeler;
     isSaving: boolean;
 
-    wedstrijds: IWedstrijd[];
+    teams: ITeam[];
     geboorteDatumDp: any;
     debuutDp: any;
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private spelerService: SpelerService,
-        private wedstrijdService: WedstrijdService,
+        private teamService: TeamService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -33,9 +33,9 @@ export class SpelerUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ speler }) => {
             this.speler = speler;
         });
-        this.wedstrijdService.query().subscribe(
-            (res: HttpResponse<IWedstrijd[]>) => {
-                this.wedstrijds = res.body;
+        this.teamService.query().subscribe(
+            (res: HttpResponse<ITeam[]>) => {
+                this.teams = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -71,7 +71,7 @@ export class SpelerUpdateComponent implements OnInit {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
-    trackWedstrijdById(index: number, item: IWedstrijd) {
+    trackTeamById(index: number, item: ITeam) {
         return item.id;
     }
     get speler() {

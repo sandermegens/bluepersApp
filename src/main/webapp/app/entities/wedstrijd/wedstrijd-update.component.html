@@ -54,6 +54,12 @@
                         <option [ngValue]="competitieOption.id" *ngFor="let competitieOption of competities; trackBy: trackCompetitieById">{{competitieOption.id}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label jhiTranslate="bluepersApp.wedstrijd.team" for="field_team">Team</label>
+                    <select class="form-control" id="field_team" multiple name="team" [(ngModel)]="wedstrijd.teams">
+                        <option [ngValue]="getSelected(wedstrijd.teams, teamOption)" *ngFor="let teamOption of teams; trackBy: trackTeamById">{{teamOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

@@ -37,6 +37,7 @@ describe('Wedstrijd e2e test', () => {
         wedstrijdUpdatePage.setPlaatsInput('plaats');
         expect(wedstrijdUpdatePage.getPlaatsInput()).toMatch('plaats');
         wedstrijdUpdatePage.competitieSelectLastOption();
+        // wedstrijdUpdatePage.teamSelectLastOption();
         wedstrijdUpdatePage.save();
         expect(wedstrijdUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

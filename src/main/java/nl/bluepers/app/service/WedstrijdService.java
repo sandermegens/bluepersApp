@@ -28,7 +28,13 @@ public interface WedstrijdService {
      */
     Page<WedstrijdDTO> findAll(Pageable pageable);
 
-
+    /**
+     * Get all the Wedstrijd with eager load of many-to-many relationships.
+     *
+     * @return the list of entities
+     */
+    Page<WedstrijdDTO> findAllWithEagerRelationships(Pageable pageable);
+    
     /**
      * Get the "id" wedstrijd.
      *
