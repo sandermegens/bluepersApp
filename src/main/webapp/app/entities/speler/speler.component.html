@@ -23,7 +23,7 @@
             <th jhiSortBy="geboorteDatum"><span jhiTranslate="bluepersApp.speler.geboorteDatum">Geboorte Datum</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="debuut"><span jhiTranslate="bluepersApp.speler.debuut">Debuut</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="bijzonderheden"><span jhiTranslate="bluepersApp.speler.bijzonderheden">Bijzonderheden</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="wedstrijdId"><span jhiTranslate="bluepersApp.speler.wedstrijd">Wedstrijd</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="teamId"><span jhiTranslate="bluepersApp.speler.team">Team</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -39,8 +39,8 @@
                 <td>{{speler.debuut | date:'mediumDate'}}</td>
                 <td>{{speler.bijzonderheden}}</td>
                 <td>
-                    <div *ngIf="speler.wedstrijdId">
-                        <a [routerLink]="['../wedstrijd', speler.wedstrijdId , 'view' ]" >{{speler.wedstrijdId}}</a>
+                    <div *ngIf="speler.teamId">
+                        <a [routerLink]="['../team', speler.teamId , 'view' ]" >{{speler.teamId}}</a>
                     </div>
                 </td>
                 <td class="text-right">

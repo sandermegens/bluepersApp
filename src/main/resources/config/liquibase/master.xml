@@ -8,8 +8,10 @@
     <include file="config/liquibase/changelog/20180722134824_added_entity_Speler.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180722140506_added_entity_Wedstrijd.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180723181926_added_entity_Competitie.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180812111317_added_entity_Team.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180722134824_added_entity_constraints_Speler.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180722140506_added_entity_constraints_Wedstrijd.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180812111317_added_entity_constraints_Team.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -25,7 +25,7 @@ export class SpelerUpdatePage {
     geboorteDatumInput = element(by.id('field_geboorteDatum'));
     debuutInput = element(by.id('field_debuut'));
     bijzonderhedenInput = element(by.id('field_bijzonderheden'));
-    wedstrijdSelect = element(by.id('field_wedstrijd'));
+    teamSelect = element(by.id('field_team'));
 
     getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -101,23 +101,23 @@ export class SpelerUpdatePage {
         return this.bijzonderhedenInput.getAttribute('value');
     }
 
-    wedstrijdSelectLastOption(): promise.Promise<void> {
-        return this.wedstrijdSelect
+    teamSelectLastOption(): promise.Promise<void> {
+        return this.teamSelect
             .all(by.tagName('option'))
             .last()
             .click();
     }
 
-    wedstrijdSelectOption(option): promise.Promise<void> {
-        return this.wedstrijdSelect.sendKeys(option);
+    teamSelectOption(option): promise.Promise<void> {
+        return this.teamSelect.sendKeys(option);
     }
 
-    getWedstrijdSelect(): ElementFinder {
-        return this.wedstrijdSelect;
+    getTeamSelect(): ElementFinder {
+        return this.teamSelect;
     }
 
-    getWedstrijdSelectedOption() {
-        return this.wedstrijdSelect.element(by.css('option:checked')).getText();
+    getTeamSelectedOption() {
+        return this.teamSelect.element(by.css('option:checked')).getText();
     }
 
     save(): promise.Promise<void> {

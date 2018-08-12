@@ -8,13 +8,13 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Speler and its DTO SpelerDTO.
  */
-@Mapper(componentModel = "spring", uses = {WedstrijdMapper.class})
+@Mapper(componentModel = "spring", uses = {TeamMapper.class})
 public interface SpelerMapper extends EntityMapper<SpelerDTO, Speler> {
 
-    @Mapping(source = "wedstrijd.id", target = "wedstrijdId")
+    @Mapping(source = "team.id", target = "teamId")
     SpelerDTO toDto(Speler speler);
 
-    @Mapping(source = "wedstrijdId", target = "wedstrijd")
+    @Mapping(source = "teamId", target = "team")
     Speler toEntity(SpelerDTO spelerDTO);
 
     default Speler fromId(Long id) {

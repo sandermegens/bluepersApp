@@ -14,5 +14,16 @@
                                  referencedColumnNames="id"
                                  referencedTableName="competitie"/>
 
+        <addForeignKeyConstraint baseColumnNames="wedstrijds_id"
+                                 baseTableName="wedstrijd_team"
+                                 constraintName="fk_wedstrijd_team_wedstrijds_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="wedstrijd"/>
+        <addForeignKeyConstraint baseColumnNames="teams_id"
+                                 baseTableName="wedstrijd_team"
+                                 constraintName="fk_wedstrijd_team_teams_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="team"/>
+        
     </changeSet>
 </databaseChangeLog>

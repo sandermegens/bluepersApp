@@ -23,7 +23,7 @@ export interface ISpeler {
     geboorteDatum?: Moment;
     debuut?: Moment;
     bijzonderheden?: string;
-    wedstrijdId?: number;
+    teamId?: number;
 }
 
 export class Speler implements ISpeler {
@@ -37,6 +37,6 @@ export class Speler implements ISpeler {
         public geboorteDatum?: Moment,
         public debuut?: Moment,
         public bijzonderheden?: string,
-        public wedstrijdId?: number
+        public teamId?: number
     ) {}
 }

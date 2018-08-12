@@ -19,8 +19,8 @@
             "datum": "Datum",
             "tijd": "Tijd",
             "plaats": "Plaats",
-            "speler": "Speler",
-            "competitie": "Competitie"
+            "competitie": "Competitie",
+            "team": "Team"
         }
     }
 }

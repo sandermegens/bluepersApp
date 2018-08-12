@@ -86,14 +86,20 @@ public class WedstrijdResource {
      * GET  /wedstrijds : get all the wedstrijds.
      *
      * @param pageable the pagination information
+     * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many)
      * @return the ResponseEntity with status 200 (OK) and the list of wedstrijds in body
      */
     @GetMapping("/wedstrijds")
     @Timed
-    public ResponseEntity<List<WedstrijdDTO>> getAllWedstrijds(Pageable pageable) {
+    public ResponseEntity<List<WedstrijdDTO>> getAllWedstrijds(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of Wedstrijds");
-        Page<WedstrijdDTO> page = wedstrijdService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/wedstrijds");
+        Page<WedstrijdDTO> page;
+        if (eagerload) {
+            page = wedstrijdService.findAllWithEagerRelationships(pageable);
+        } else {
+            page = wedstrijdService.findAll(pageable);
+        }
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, String.format("/api/wedstrijds?eagerload=%b", eagerload));
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 

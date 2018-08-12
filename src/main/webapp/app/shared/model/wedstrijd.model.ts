@@ -1,13 +1,13 @@
 import { Moment } from 'moment';
-import { ISpeler } from 'app/shared/model//speler.model';
+import { ITeam } from 'app/shared/model//team.model';
 
 export interface IWedstrijd {
     id?: number;
     datum?: Moment;
     tijd?: Moment;
     plaats?: string;
-    spelers?: ISpeler[];
     competitieId?: number;
+    teams?: ITeam[];
 }
 
 export class Wedstrijd implements IWedstrijd {
@@ -16,7 +16,7 @@ export class Wedstrijd implements IWedstrijd {
         public datum?: Moment,
         public tijd?: Moment,
         public plaats?: string,
-        public spelers?: ISpeler[],
-        public competitieId?: number
+        public competitieId?: number,
+        public teams?: ITeam[]
     ) {}
 }

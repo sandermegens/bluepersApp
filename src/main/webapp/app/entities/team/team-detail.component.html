@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="team">
+            <h2><span jhiTranslate="bluepersApp.team.detail.title">Team</span> {{team.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="bluepersApp.team.naam">Naam</span></dt>
+                <dd>
+                    <span>{{team.naam}}</span>
+                </dd>
+                <dt><span jhiTranslate="bluepersApp.team.competitie">Competitie</span></dt>
+                <dd>
+                    <span *ngFor="let competitie of team.competities; let last = last">
+                        <a [routerLink]="['/competitie', competitie?.id, 'view' ]">{{competitie.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/team', team.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

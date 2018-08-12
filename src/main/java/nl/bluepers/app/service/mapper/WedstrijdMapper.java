@@ -8,13 +8,12 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Wedstrijd and its DTO WedstrijdDTO.
  */
-@Mapper(componentModel = "spring", uses = {CompetitieMapper.class})
+@Mapper(componentModel = "spring", uses = {CompetitieMapper.class, TeamMapper.class})
 public interface WedstrijdMapper extends EntityMapper<WedstrijdDTO, Wedstrijd> {
 
     @Mapping(source = "competitie.id", target = "competitieId")
     WedstrijdDTO toDto(Wedstrijd wedstrijd);
 
-    @Mapping(target = "spelers", ignore = true)
     @Mapping(source = "competitieId", target = "competitie")
     Wedstrijd toEntity(WedstrijdDTO wedstrijdDTO);
 

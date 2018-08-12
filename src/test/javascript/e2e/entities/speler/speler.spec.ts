@@ -45,7 +45,7 @@ describe('Speler e2e test', () => {
         expect(spelerUpdatePage.getDebuutInput()).toMatch('2000-12-31');
         spelerUpdatePage.setBijzonderhedenInput('bijzonderheden');
         expect(spelerUpdatePage.getBijzonderhedenInput()).toMatch('bijzonderheden');
-        spelerUpdatePage.wedstrijdSelectLastOption();
+        spelerUpdatePage.teamSelectLastOption();
         spelerUpdatePage.save();
         expect(spelerUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

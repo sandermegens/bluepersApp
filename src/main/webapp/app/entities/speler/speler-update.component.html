@@ -77,10 +77,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.wedstrijd" for="field_wedstrijd">Wedstrijd</label>
-                    <select class="form-control" id="field_wedstrijd" name="wedstrijd" [(ngModel)]="speler.wedstrijdId" >
+                    <label class="form-control-label" jhiTranslate="bluepersApp.speler.team" for="field_team">Team</label>
+                    <select class="form-control" id="field_team" name="team" [(ngModel)]="speler.teamId" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="wedstrijdOption.id" *ngFor="let wedstrijdOption of wedstrijds; trackBy: trackWedstrijdById">{{wedstrijdOption.id}}</option>
+                        <option [ngValue]="teamOption.id" *ngFor="let teamOption of teams; trackBy: trackTeamById">{{teamOption.id}}</option>
                     </select>
                 </div>
             </div>
